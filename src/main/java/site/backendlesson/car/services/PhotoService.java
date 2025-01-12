@@ -1,0 +1,4 @@
+package site.backendlesson.car.services;
+
+public interface PhotoService{
+}

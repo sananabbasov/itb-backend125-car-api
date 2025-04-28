@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ApiResponse> resourceNotFoundExceptionHandler(ResourceNotFoundException ex)
     {
         String message = ex.getMessage();
-        ApiResponse apiResponse = new ApiResponse(message,false);
+        ApiResponse apiResponse = new ApiResponse(message,false,HttpStatus.NOT_FOUND);
         return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.NOT_FOUND);
     }
 
@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ApiResponse> handleApiException(ApiException ex)
     {
         String message = ex.getMessage();
-        ApiResponse apiResponse = new ApiResponse(message,true);
-        return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.BAD_REQUEST);
+        ApiResponse apiResponse = new ApiResponse(message,true,HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<ApiResponse>(apiResponse, apiResponse.getHttpStatus());
     }
 }

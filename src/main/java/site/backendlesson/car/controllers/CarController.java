@@ -3,6 +3,7 @@ package site.backendlesson.car.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,7 @@ public class CarController {
     }
 
     @GetMapping("/getall")
+    @PreAuthorize("hasAnyAuthority(@securityService.privilege('car_getall'))")
     public ResponseEntity<List<CarHomeDto>> getAll(){
         List<CarHomeDto> cars = carService.getHomeCars();
         return new ResponseEntity<>(cars, HttpStatus.OK);

@@ -3,6 +3,7 @@ package site.backendlesson.car.payloads;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.http.HttpStatus;
 
 @Data
 @AllArgsConstructor
@@ -10,4 +11,5 @@ import lombok.NoArgsConstructor;
 public class ApiPayload<T> {
     private boolean success;
     private T data;
+    private HttpStatus httpStatus;
 }
